@@ -12,4 +12,4 @@ The map files contain of the following values:
 Compile using `make`.
 Run using `./raycaster {file_name}`
 
-Requires [SDL2]: https://www.libsdl.org/
+Requires [SDL2](https://www.libsdl.org/)

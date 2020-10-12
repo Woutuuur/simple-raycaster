@@ -2,6 +2,7 @@
 A simple ray caster in made in C++ with SDL2
 
 Requires SDL2. Compile using `make`.
+The `options.h` file can be changed (before compilation) to either increase/decrease the amount of rays and the FOV of the camera.
 
 The map files contain of the following values:
 - Two values representing the initial player X and Y position (in px)

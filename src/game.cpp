@@ -1,6 +1,8 @@
 #include "game.h"
 #include "options.h"
 
+const double maxDist = sqrt(SCREEN_WIDTH * SCREEN_WIDTH + SCREEN_HEIGHT * SCREEN_HEIGHT);
+
 Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 	startTime = SDL_GetTicks();
@@ -72,12 +74,16 @@ double nmap(double x, double in_min, double in_max, double out_min, double out_m
 
 void Game::draw3D(const double dist, const double c)
 {
+	const double screenX = SCREEN_WIDTH / 3;
+	const double screenW = SCREEN_WIDTH * 2 / 3;
+	const double sq = dist * dist;
+	const double sqW = screenW * screenW;
 	SDL_Rect rect;
-	rect.x = SCREEN_WIDTH / 3 + (SCREEN_WIDTH * 2 / 3) / RAYS * c;
-	rect.w = SCREEN_WIDTH * 2 / 3 / RAYS;
-	rect.h = nmap(dist, 0, SCREEN_HEIGHT, SCREEN_HEIGHT, 0);
+	rect.w = screenW / RAYS;
+	rect.x = screenX + rect.w * (RAYS - c);
+	rect.h = nmap(1/dist, 0, ANTI_FISH_EYE, 0, SCREEN_HEIGHT);
 	rect.y = (SCREEN_HEIGHT - rect.h)/2;
-	SDL_SetRenderDrawColor(renderer, nmap(dist, 0, SCREEN_HEIGHT, 255, 0), nmap(dist, 0, SCREEN_HEIGHT, 255, 0), nmap(dist, 0, SCREEN_HEIGHT, 255, 0), 255);
+	SDL_SetRenderDrawColor(renderer, nmap(dist, 0, maxDist-100, 255, 0), nmap(dist, 0, maxDist-100, 255, 0), nmap(dist, 0, maxDist-100, 255, 0), 255);
 	SDL_RenderFillRect(renderer, &rect);
 }
 

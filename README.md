@@ -12,3 +12,8 @@ Compile using `make`.
 Run using `./raycaster {file_name}`
 
 Requires [SDL2](https://www.libsdl.org/).
+
+TODO
+- Collision detection
+- Smarter(/faster) raycasting
+- Textures

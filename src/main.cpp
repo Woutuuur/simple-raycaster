@@ -28,6 +28,7 @@ int main(int argc, const char *argv[])
 			game->render();
 		}
 		game->quit();
+		delete game;
 	}
 	catch (std::exception &e)
 	{

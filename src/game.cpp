@@ -18,6 +18,12 @@ Game::Game(const char* title, int xpos, int ypos, int width, int height, bool fu
 	isRunning = true;
 }
 
+Game::~Game()
+{
+	delete player;
+	SDL_DestroyRenderer(renderer);
+}
+
 void Game::readMap(const std::string fileName)
 {
 	std::fstream FS;
@@ -65,7 +71,6 @@ void Game::handleEvents(const double dT)
 				break;
 		}
 	}
-
 }
 
 double nmap(double x, double in_min, double in_max, double out_min, double out_max) {
@@ -96,10 +101,9 @@ void Game::renderRays()
 		double fovOffset = nmap(c, 0, RAYS, -FOV/2, FOV/2);
 		double minDist = 10000;
 		double dist = 0;
-		Ray ray = Ray(renderer, player->getX(), player->getY(), player->getAngle() + fovOffset);
+		Ray ray(renderer, player->getX(), player->getY(), player->getAngle() + fovOffset);
 		for (int i = 0; i < map.size(); i++)
 		{
-
 			for (int j = 0; j < map.at(i).size(); j++)
 			{
 				if (map.at(i).at(j) == WALL)

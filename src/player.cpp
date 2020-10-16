@@ -30,6 +30,11 @@ Player::Player(SDL_Renderer *ren, const float x, const float y)
 	angle = 0;
 }
 
+Player::~Player()
+{
+	SDL_DestroyRenderer(renderer);
+}
+
 void Player::handleKeyPresses(const Uint8*& keystate, const double deltaTime)
 {
 	if (keystate[SDL_SCANCODE_UP] || keystate[SDL_SCANCODE_W])

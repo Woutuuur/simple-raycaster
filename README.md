@@ -1,7 +1,6 @@
 # Simple raycaster
 A simple ray caster made using C++ and SDL2.
 
-
 The `options.h` file can be changed (before compilation) to either increase/decrease the amount of rays and the FOV of the camer, among other parameters. 
 
 The map files contain of the following values:

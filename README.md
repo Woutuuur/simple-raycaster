@@ -1,6 +1,10 @@
 # Simple raycaster
 A simple ray caster made using C++ and SDL2.
 
+![](example.png)
+
+The camera can be controlled with either WASD or the arrow keys. A visualization of the rays casting on the map is shown on the left and the result is on the right.
+
 The `options.h` file can be changed (before compilation) to either increase/decrease the amount of rays and the FOV of the camer, among other parameters. 
 
 The map files contain of the following values:
